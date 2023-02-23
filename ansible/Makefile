@@ -8,7 +8,6 @@ SOURCES = $(shell find roles -type f)
 
 all: $(ENTRY_SRC) $(SOURCES) $(INVENTORY)
 	$(ANSIBLE) $(ENTRY_SRC) \
-               -v \
                --timeout 120 \
 	           -i "$(INVENTORY)" \
 	           -e "ansible_python_interpreter=/usr/bin/python3"
