@@ -1,0 +1,12 @@
+- name: wait for daily updates to finish
+  become: true
+  raw: |
+    systemd-run --property="After=apt-daily.service apt-daily-upgrade.service" --wait /bin/true
+
+- name: install and update apt packages
+  become: true
+  block:
+    - name: upgrade apt
+      apt:
+        upgrade: yes
+        update_cache: yes
